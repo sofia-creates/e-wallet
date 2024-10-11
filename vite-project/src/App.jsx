@@ -9,7 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-//importera Home här efter den skapats
+import Home from "./routes/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,8 +20,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <RouterProvider router={router} />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { addCard } from "../features/cards/cardSlice";
+import { addNewCard } from "../features/cards/cardSlice";
+import { useDispatch } from "react-redux";
 
 const AddCard = () => {
   //   let [cardholderName, setCardholderName] = useState("");
@@ -16,12 +17,26 @@ const AddCard = () => {
     ccv: "",
   });
 
+  const dispatch = useDispatch();
+
   function handleSubmit() {
-    event.preventDefault;
+    event.preventDefault();
 
-    // let newCard = {
+    console.log("handleSubmit is run");
+    //addNewCard
+    dispatch(addNewCard(card));
 
-    // }
+    //double check if redux state has been updated
+    //console.log("cards is: ", cards);
+
+    //empty card state
+    setCard({
+      cardProvider: "",
+      cardHolderName: "",
+      cardNumber: "",
+      expirationDate: "",
+      ccv: "",
+    });
   }
 
   function handleInputChange(event) {

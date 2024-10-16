@@ -1,9 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 
 const CardList = ({ cards }) => {
+  //when cards are updated, rerender cardlist
+  useEffect(() => {
+    //console.log("cards have been updated");
+  }, [cards]);
+
   return (
     <ul>
-      CardList
       {cards.map((card, index) => (
         <li key={index}>
           <p>Card Provider: {card.cardProvider}</p>

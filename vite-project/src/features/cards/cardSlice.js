@@ -16,6 +16,7 @@ const cardSlice = createSlice({
     reducers: {
         addNewCard: (state, action) => {
             state.cards.push(action.payload);
+            console.log("new card has been added, cards is now: " , [...state.cards])
         },
     },
 })

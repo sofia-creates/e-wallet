@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { addNewCard } from "../features/cards/cardSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AddCard = () => {
-  //   let [cardholderName, setCardholderName] = useState("");
-  //   let [cardNumber, setCardNumber] = useState("");
-  //   let [expirationDate, setExpirationDate] = useState();
-  //   let [ccv, setCcv] = useState();
-  //   let [cardProvider, setCardProvider] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let [card, setCard] = useState({
     cardProvider: "",
@@ -16,8 +14,6 @@ const AddCard = () => {
     expirationDate: "",
     ccv: "",
   });
-
-  const dispatch = useDispatch();
 
   function handleSubmit() {
     event.preventDefault();
@@ -37,6 +33,9 @@ const AddCard = () => {
       expirationDate: "",
       ccv: "",
     });
+
+    //route to Home page
+    navigate("/");
   }
 
   function handleInputChange(event) {

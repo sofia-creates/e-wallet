@@ -7,6 +7,14 @@ const CardList = ({ cards }) => {
     //console.log("cards have been updated");
   }, [cards]);
 
+  let toggleActive = () => {
+    //if card is not active, set as active
+
+    //else: set as inactive
+  }
+
+  }
+
   return (
     <ul>
       {cards.map((card, index) => (
@@ -16,6 +24,7 @@ const CardList = ({ cards }) => {
           <p>Card Number: {card.cardNumber}</p>
           <p>Expiration Date: {card.expirationDate}</p>
           <p>CCV: {card.ccv}</p>
+          <button>{card== !active ? inactivate : activate}</button>
         </li>
       ))}
     </ul>

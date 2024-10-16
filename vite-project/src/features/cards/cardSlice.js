@@ -14,7 +14,7 @@ const cardSlice = createSlice({
         },],
     },
     reducers: {
-        addCard: (state, action) => {
+        addNewCard: (state, action) => {
             state.cards.push(action.payload);
         },
     },
@@ -22,4 +22,4 @@ const cardSlice = createSlice({
 
 export default cardSlice.reducer;
 
-export const addCard = cardSlice.actions.addCard;
+export const addNewCard = cardSlice.actions.addNewCard;

@@ -10,7 +10,7 @@ const cardSlice = createSlice({
             cardNumber: 1234,
             expirationDate: "12/25",
             ccv: 123,
-
+            active: false
         },],
     },
     reducers: {
@@ -18,9 +18,17 @@ const cardSlice = createSlice({
             state.cards.push(action.payload);
             console.log("new card has been added, cards is now: " , [...state.cards])
         },
+        toggleCardActive: (state, action) => {
+            const card = state.cards.find((c) => c.cardNumber === action.payload);  // Find the card by some unique property
+            if (card) {
+                card.active = !card.active; // Toggle the 'active' property
+            }
+        },
     },
-})
+});
+
+
+export const {toggleCardActive} = cardSlice.actions;
+export const addNewCard = cardSlice.actions.addNewCard;
 
 export default cardSlice.reducer;
-
-export const addNewCard = cardSlice.actions.addNewCard;

@@ -1,19 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { toggleCardActive } from "./cardSlice";
 
 const CardList = ({ cards }) => {
+  const dispatch = useDispatch();
+
   //when cards are updated, rerender cardlist
   useEffect(() => {
     //console.log("cards have been updated");
   }, [cards]);
 
-  let toggleActive = () => {
-    //if card is not active, set as active
-
-    //else: set as inactive
-  }
-
-  }
+  let toggleActive = (cardNumber) => {
+    console.log("toggleActive is run");
+    dispatch(toggleCardActive(cardNumber));
+  };
 
   return (
     <ul>
@@ -24,7 +25,9 @@ const CardList = ({ cards }) => {
           <p>Card Number: {card.cardNumber}</p>
           <p>Expiration Date: {card.expirationDate}</p>
           <p>CCV: {card.ccv}</p>
-          <button>{card== !active ? inactivate : activate}</button>
+          <button onClick={() => toggleActive(card.cardNumber)}>
+            {card.active ? "Inactivate" : "Activate"}
+          </button>
         </li>
       ))}
     </ul>

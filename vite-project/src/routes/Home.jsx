@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   //get cards from localStorage
-  //const [cards, setCards] = useState([]);
   const cards = useSelector((state) => state.cards.cards);
 
   return (

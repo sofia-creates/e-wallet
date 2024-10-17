@@ -8,7 +8,7 @@ const AddCard = () => {
   const navigate = useNavigate();
 
   let [card, setCard] = useState({
-    cardProvider: "",
+    cardProvider: "MasterCard",
     cardHolderName: "",
     cardNumber: "",
     expirationDate: "",
@@ -29,7 +29,7 @@ const AddCard = () => {
 
     //empty card state
     setCard({
-      cardProvider: "",
+      cardProvider: "MasterCard",
       cardHolderName: "",
       cardNumber: "",
       expirationDate: "",
@@ -60,6 +60,7 @@ const AddCard = () => {
               name="cardProvider"
               id="cardProviderSelect"
               onChange={handleInputChange}
+              value={card.cardProvider}
             >
               <option value="MasterCard">MasterCard</option>
               <option value="VISA">VISA</option>

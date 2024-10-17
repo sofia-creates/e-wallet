@@ -1,9 +1,26 @@
+export function validateCardData(data){
+    let errors = {};
+
+    //cardNumber 
+    if (isNan(data.cardNumber) ){
+        errors.cardNumber = "cardNumber must be only numbers"
+    }  
+    if(data.cardNumber.length != 16){
+        errors.cardNumber = "cardNumber must be 16 digits"
+    }
+
+    //expirationDate
+    //expirationDate cannot be a past date
+    //get todays date
+
+}
+
+
 //cardNumber must be unique
 
-//cardNumber must have 16 numbers
+//cardNumber must have 16 numbers, and be only numbers
 
-//expirationDate cannot be a past date
 
 //cardHolderName can't include numbers
 
-//cardProvider must be filled out, and gives card a specific color + logo for cardProvider
+//cardProvider gives card a specific color + logo for cardProvider

@@ -24,11 +24,17 @@ const cardSlice = createSlice({
                 card.active = !card.active; // Toggle the 'active' property
             }
         },
+        deleteCard: (state,action) => {
+            const cardIndex = state.cards.findIndex((c) => c.cardNumber === action.payload);
+            if (cardIndex) {
+                state.cards.splice(cardIndex, 1); 
+            }
+        }
     },
 });
 
 
-export const {toggleCardActive} = cardSlice.actions;
+export const {toggleCardActive, deleteCard} = cardSlice.actions;
 export const addNewCard = cardSlice.actions.addNewCard;
 
 export default cardSlice.reducer;

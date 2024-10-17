@@ -44,9 +44,25 @@
 
 /* custom css */
 header {
-  background-color: rgb(254, 221, 210);
+  background-color: rgb(247, 212, 234);
 }
 
 footer {
   background-color: rgb(204, 226, 179);
+}
+
+.cardList {
+  list-style-type: none; 
+}
+
+.cardDiv {
+  background-color: #888;
+  width: 80vw;
+  height: 37vh;
+  border-radius: 6px;
+  padding: 3%;
+}
+
+button {
+  margin: 0 1.5em 0 1.5em;
 }

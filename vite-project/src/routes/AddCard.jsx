@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addNewCard } from "../features/cards/cardSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { validateCardData } from "../utils/validationHelpers";
 
 const AddCard = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,23 @@ const AddCard = () => {
 
   const cards = useSelector((state) => state.cards.cards);
 
-  function handleSubmit() {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
 
     console.log("handleSubmit is run");
+
+    //validate
+    function validate() {
+      const [hasErrors, errors] = validateCardData(card);
+
+      if (hasErrors) {
+        console.log("validation check failed. errors:", errors);
+        return;
+      }
+    }
+
+    validate();
+
     //addNewCard
     dispatch(addNewCard(card));
 
@@ -38,6 +52,22 @@ const AddCard = () => {
 
     //route to Home page
     navigate("/");
+  }
+
+  function handleCardNumberChange(e) {
+    let value = e.target.value.replace(/\s+/g, ""); // Remove all spaces
+    if (value.length > 16) {
+      value = value.slice(0, 16); // Limit to 16 digits
+    }
+
+    // Add space every 4 characters
+    const formattedValue = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+    // Set the formatted value in state
+    setCard((prevCard) => ({
+      ...prevCard,
+      cardNumber: formattedValue,
+    }));
   }
 
   function handleInputChange(event) {
@@ -74,11 +104,13 @@ const AddCard = () => {
               onChange={handleInputChange}
             />
             <input
-              type="number"
+              type="text"
               name="cardNumber"
               id=""
               placeholder="Card number"
-              onChange={handleInputChange}
+              onChange={handleCardNumberChange}
+              value={card.cardNumber}
+              maxLength="19" // Allows 16 digits + 3 spaces
             />
             <label htmlFor="expirationDateInput">Expiration date</label>
             <input

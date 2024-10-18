@@ -4,14 +4,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const cardSlice = createSlice({
     name: "cards",
     initialState: {
-        cards: [{
-            cardProvider: "VISA",
-            cardHolderName: "Jane Doe",
-            cardNumber: 1234,
-            expirationDate: "12/25",
-            ccv: 123,
-            active: false
-        },],
+        cards: [
+        //     {
+        //     cardProvider: "VISA",
+        //     cardHolderName: "Jane Doe",
+        //     cardNumber: 1234,
+        //     expirationDate: "12/25",
+        //     ccv: 123,
+        //     active: false
+        // },
+    ],
     },
     reducers: {
         addNewCard: (state, action) => {

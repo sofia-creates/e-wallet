@@ -29,10 +29,10 @@ const CardList = ({ cards }) => {
         <section className="cardList">
           {cards.map((card, index) => (
             <div key={index} className="cardDiv">
-              <p>Card Provider: {card.cardProvider}</p>
-              <p>Card Holder: {card.cardHolderName}</p>
-              <p>Card Number: {card.cardNumber}</p>
-              <p>Expiration Date: {card.expirationDate}</p>
+              <p>{card.cardProvider}</p>
+              <p>{card.cardHolderName}</p>
+              <p>{card.cardNumber}</p>
+              <p>{card.expirationDate}</p>
               <p>CCV: {card.ccv}</p>
               <button onClick={() => toggleActive(card.cardNumber)}>
                 {card.active ? "Inactivate" : "Activate"}

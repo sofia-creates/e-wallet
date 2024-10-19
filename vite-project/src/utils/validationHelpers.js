@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux";
 
-export function validateCardData(data){
-    const cards = useSelector((state) => state.cards.cards);
+
+export function validateCardData(data, previousCards){
     
     let errors = {};
 
@@ -20,9 +19,13 @@ export function validateCardData(data){
     //cardNumber must be unique
     let doesCardNumberAlreadyExist = () => {
         //get all cards, find the cardNumber within list
-        
+     if (previousCards.find((c) => c.cardNumber === data.cardNumber)){
+        console.log("Card number already exists!");
+        return;
+     }  // Find the card by cardnumber
     }
 
+    doesCardNumberAlreadyExist();
 
     //expirationDate
 

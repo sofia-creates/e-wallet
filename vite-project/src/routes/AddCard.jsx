@@ -16,6 +16,8 @@ const AddCard = () => {
     ccv: "",
   });
 
+  let [validationErrors, setValidationErrors] = useState([]);
+
   const cards = useSelector((state) => state.cards.cards);
 
   function handleSubmit(e) {
@@ -25,15 +27,21 @@ const AddCard = () => {
 
     //validate
     function validate() {
-      const [hasErrors, errors] = validateCardData(card);
+      const [hasErrors, errors] = validateCardData(card, cards);
 
       if (hasErrors) {
         console.log("validation check failed. errors:", errors);
-        return;
+        setValidationErrors(errors);
+        return true; // Return true to indicate there are errors
       }
+
+      return false; // No errors
     }
 
-    validate();
+    // If validation returns true (errors found), stop form submission
+    if (validate()) {
+      return; // Stop execution if validation failed
+    }
 
     //addNewCard
     dispatch(addNewCard(card));
@@ -85,6 +93,18 @@ const AddCard = () => {
       ) : (
         <>
           <h1>Add a new card</h1>
+          <div id="cardPreview" className="cardDiv">
+            <p>{card.cardProvider}</p>
+            <p>{card.cardHolderName}</p>
+            <p>{card.cardNumber}</p>
+            <p>{card.expirationDate}</p>
+            <p>{card.ccv}</p>
+          </div>
+          <div className="errorBox">
+            <p>{validationErrors.cardHolderName}</p>
+            <p>{validationErrors.cardNumber}</p>
+            <p>{validationErrors.expirationDate}</p>
+          </div>
           <form action="" onSubmit={handleSubmit}>
             <select
               name="cardProvider"

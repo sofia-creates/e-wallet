@@ -21,7 +21,7 @@ const cardSlice = createSlice({
             console.log("new card has been added, cards is now: " , [...state.cards])
         },
         toggleCardActive: (state, action) => {
-            const card = state.cards.find((c) => c.cardNumber === action.payload);  // Find the card by some unique property
+            const card = state.cards.find((c) => c.cardNumber === action.payload);  // Find the card by cardnumber
             if (card) {
                 card.active = !card.active; // Toggle the 'active' property
             }

@@ -13,8 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
-      <h2>Your cards</h2>
+      <h1>Welcome to your eWallet</h1>
       <CardList cards={cards} />
     </div>
   );

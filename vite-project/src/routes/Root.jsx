@@ -6,7 +6,10 @@ const Root = () => {
   return (
     <div className="site-wrapper">
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+        {/* wrapping inside main for styling purposes */}
+      </main>
       <Footer />
     </div>
   );

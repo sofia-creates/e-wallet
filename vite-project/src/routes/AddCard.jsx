@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { addNewCard } from "../features/cards/cardSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -78,6 +78,18 @@ const AddCard = () => {
     }));
   }
 
+  function handleCcvChange(e) {
+    let value = e.target.value;
+    if (value.length > 3) {
+      value = value.slice(0, 3); // Limit to 3 digits
+    }
+
+    setCard((prevCard) => ({
+      ...prevCard,
+      ccv: value,
+    }));
+  }
+
   function handleInputChange(event) {
     const { name, value } = event.target;
     setCard((prevCard) => ({
@@ -86,6 +98,26 @@ const AddCard = () => {
     }));
   }
 
+  //preview related
+  const cardPreviewRef = useRef(null);
+
+  function addProviderClass() {
+    if (card.cardProvider == "MasterCard") {
+      cardPreviewRef.current.classList.add("masterCard");
+      cardPreviewRef.current.classList.remove("visa", "americanExpress");
+    } else if (card.cardProvider == "VISA") {
+      cardPreviewRef.current.classList.add("visa");
+      cardPreviewRef.current.classList.remove("masterCard", "americanExpress");
+    } else if (card.cardProvider == "AmericanExpress") {
+      cardPreviewRef.current.classList.add("americanExpress");
+      cardPreviewRef.current.classList.remove("visa", "masterCard");
+    }
+  }
+
+  useEffect(() => {
+    addProviderClass();
+  }, [card.cardProvider]);
+
   return (
     <div>
       {cards.length >= 4 ? (
@@ -93,7 +125,7 @@ const AddCard = () => {
       ) : (
         <>
           <h1>Add a new card</h1>
-          <div id="cardPreview" className="cardDiv">
+          <div ref={cardPreviewRef} id="cardPreview" className="cardDiv">
             <p>{card.cardProvider}</p>
             <p>{card.cardHolderName}</p>
             <p>{card.cardNumber}</p>
@@ -139,13 +171,13 @@ const AddCard = () => {
               id="expirationDateInput"
               onChange={handleInputChange}
             />
-            <label htmlFor="ccvInput">CCV</label>
             <input
               type="number"
               name="ccv"
               id="ccvInput"
               placeholder="CCV"
-              onChange={handleInputChange}
+              onChange={handleCcvChange}
+              maxLength="3"
             />
             <button type="submit">Add new card</button>
           </form>

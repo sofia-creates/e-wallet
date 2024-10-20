@@ -70,12 +70,12 @@ a:visited {
 }
 
 a, a:visited , a:hover, a:active {
-  color:white;
+  color:white !important;
   font-weight: 300;
 }
 a:hover {
   text-decoration: underline;
-  color: white;
+  color: white !important;
 }
 
 
@@ -107,16 +107,24 @@ button {
   font-family: "Cutive Mono", monospace;
   font-weight: 150;
   font-style: normal;
+  color: white;
+  text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
 
   box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.15);
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.60);
 
   background: rgb(79,79,79);
   background: linear-gradient(153deg, rgba(79,79,79,1) 0%, rgba(158,158,158,1) 78%, rgba(75,75,75,1) 100%);
-  color: white;
-  text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.5);
-  letter-spacing: 2px;
+  
+  /* for flipping */
+  
 }
+
+/* flipping card */
+
+
+
 
 
 /* cardProvider styles */

@@ -59,12 +59,18 @@ const CardList = ({ cards }) => {
                 <div
                   className={`cardDiv ${getProviderClass(card.cardProvider)}`}
                 >
-                  <p>{card.cardProvider}</p>
-                  <p>{card.cardNumber}</p>
-                  <p>{card.expirationDate}</p>
-                  <p>{card.cardHolderName}</p>
-                  <p>CCV: {card.ccv}</p>
-                  {/* <img src="assets/" alt="" /> */}
+                  <div className="flip-inner">
+                    <div className="flip-front">
+                      <p>{card.cardProvider}</p>
+                      <p>{card.cardNumber}</p>
+                      <p>{card.expirationDate}</p>
+                      <p>{card.cardHolderName}</p>
+                      {/* <img src="assets/" alt="" /> */}
+                    </div>
+                    <div className="flip-back">
+                      <p>CCV: {card.ccv}</p>
+                    </div>
+                  </div>
                 </div>
                 <button onClick={() => toggleActive(card.cardNumber)}>
                   {card.active ? "Inactivate" : "Activate"}

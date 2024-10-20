@@ -56,10 +56,12 @@ const CardList = ({ cards }) => {
           <section className="cardList">
             {cards.map((card, index) => (
               <div className="cardContainer" key={index}>
-                <div
-                  className={`cardDiv ${getProviderClass(card.cardProvider)}`}
-                >
-                  <div className="flip-inner">
+                <div className="flip-outer">
+                  <div
+                    className={`flip-inner cardDiv ${getProviderClass(
+                      card.cardProvider
+                    )}`}
+                  >
                     <div className="flip-front">
                       <p>{card.cardProvider}</p>
                       <p>{card.cardNumber}</p>

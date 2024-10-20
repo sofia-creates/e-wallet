@@ -111,19 +111,38 @@ button {
   text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.5);
   letter-spacing: 2px;
 
-  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.15);
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.60);
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.13);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.50);
 
   background: rgb(79,79,79);
   background: linear-gradient(153deg, rgba(79,79,79,1) 0%, rgba(158,158,158,1) 78%, rgba(75,75,75,1) 100%);
-  
+    
+}
+
+
   /* for flipping */
-  
+.flip-outer {
+  perspective: 1000px;
 }
 
 /* flipping card */
+.flip-inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
 
+.flip-front , .flip-back {
+  backface-visibility: hidden;
+}
 
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Do a horizontal flip when you move the mouse over the flip box container */
+.flip-outer:hover .flip-inner {
+  transform: rotateY(180deg);
+}
 
 
 

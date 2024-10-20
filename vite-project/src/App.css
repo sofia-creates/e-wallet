@@ -21,10 +21,6 @@ main {
   padding: 3em;
   align-items: center;
   justify-content: center;
-  
-
-  /* background: rgb(129,128,128);
-  background: linear-gradient(153deg, rgb(190, 189, 189) 0%, rgba(187,187,187,1) 71%, rgb(130, 130, 130) 100%);  */
 }
 
 header {

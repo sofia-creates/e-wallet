@@ -8,11 +8,6 @@ const CardList = ({ cards }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //when cards are updated, rerender cardlist
-  useEffect(() => {
-    //console.log("cards have been updated");
-  }, [cards]);
-
   let toggleActive = (cardNumber) => {
     console.log("toggleActive is run");
     dispatch(toggleCardActive(cardNumber));
@@ -74,9 +69,9 @@ const CardList = ({ cards }) => {
                     </div>
                   </div>
                 </div>
-                <button onClick={() => toggleActive(card.cardNumber)}>
+                {/* <button onClick={() => toggleActive(card.cardNumber)}>
                   {card.active ? "Inactivate" : "Activate"}
-                </button>
+                </button> */}
                 <button onClick={() => deleteThisCard(card.cardNumber)}>
                   Delete
                 </button>

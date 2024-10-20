@@ -4,11 +4,9 @@ import CardList from "../features/cards/CardList";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-//Den här ska visa ut korten som finns, plus knapp som går till att skapa ett nytt kort
+//Show the existing cards, and a button to create new card
 
 const Home = () => {
-  //get cards from localStorage
-  //const [cards, setCards] = useState([]);
   const cards = useSelector((state) => state.cards.cards);
 
   return (

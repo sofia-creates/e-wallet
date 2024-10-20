@@ -46,9 +46,6 @@ const AddCard = () => {
     //addNewCard
     dispatch(addNewCard(card));
 
-    //double check if redux state has been updated
-    //console.log("cards is: ", cards);
-
     //empty card state
     setCard({
       cardProvider: "MasterCard",

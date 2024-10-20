@@ -67,4 +67,3 @@ export function validateCardData(data, previousCards){
 }
 
 
-//cardProvider gives card a specific color + logo for cardProvider
